@@ -43,21 +43,15 @@ exports.createPI = async (req, res) => {
         (result, error) => {
           if (error) {
             console.log(error);
+            return  res.status(500).send({ audioURL: error.secure_url });
           } else {
-            console.log(result);
-            audioURL = result.secure_url;
-            console.log("Audio file created successfully");
-            res.status(200).json({
-              message: "Audio file created successfully",
-              audioURL: audioURL,
-            });
+
+            return res.status(200).send({ audioURL: result.secure_url });
           }
         }
       );
 
       response.data.pipe(uploadStream);
-
-      console.log("File saved successfully!");
     } catch (error) {
       console.error(error);
       console.log("Error occurred while fetching speech data");
