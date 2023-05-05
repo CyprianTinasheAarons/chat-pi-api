@@ -1,7 +1,6 @@
 const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
 const cloudinary = require("cloudinary").v2;
+
 require("dotenv").config();
 
 // Configuration
@@ -36,42 +35,29 @@ exports.createPI = async (req, res) => {
         headers: headers,
         responseType: "stream",
       });
-      //save file in public folder random name
-      const name = `${ 
-        Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15)
-      }.mp3`;
-      const writer = fs.createWriteStream(
-        path.join(process.cwd(), "public", name)
-      );
-      response.data.pipe(writer);
-      writer.on("finish", async () => {
-        //Upload audio file to cloudinary
-        await cloudinary.uploader
-          .upload(path.join(process.cwd(), "public", name), {
-            resource_type: "video",
-          })
-          .then(async (result) => {
+
+      const uploadStream = cloudinary.uploader.upload_stream(
+        {
+          resource_type: "video",
+        },
+        (result, error) => {
+          if (error) {
+            console.log(error);
+          } else {
             console.log(result);
             audioURL = result.secure_url;
-            //Delete audio file from public folder
-            fs.unlinkSync(path.join(process.cwd(), "public", name));
-            
-            return res.status(200).json({
+            console.log("Audio file created successfully");
+            res.status(200).json({
               message: "Audio file created successfully",
               audioURL: audioURL,
             });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        console.log("File saved successfully!");
-      });
+          }
+        }
+      );
 
-      writer.on("error", (error) => {
-        console.error(error);
-        console.log("Error occurred while saving file");
-      });
+      response.data.pipe(uploadStream);
+
+      console.log("File saved successfully!");
     } catch (error) {
       console.error(error);
       console.log("Error occurred while fetching speech data");

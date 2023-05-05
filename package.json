@@ -29,6 +29,7 @@
     "mongoose": "^6.4.2",
     "morgan": "^1.10.0",
     "qrcode": "^1.5.1",
-    "speakeasy": "^2.0.0"
+    "speakeasy": "^2.0.0",
+    "streamifier": "^0.1.1"
   }
 }
