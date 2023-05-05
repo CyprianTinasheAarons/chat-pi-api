@@ -36,8 +36,11 @@ exports.createPI = async (req, res) => {
         headers: headers,
         responseType: "stream",
       });
-      //save file in public folder
-      const name = `${new Date().getTime()}.mp3`;
+      //save file in public folder random name
+      const name = `${ 
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15)
+      }.mp3`;
       const writer = fs.createWriteStream(
         path.join(process.cwd(), "public", name)
       );
