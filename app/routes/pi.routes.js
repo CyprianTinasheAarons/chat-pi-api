@@ -6,8 +6,6 @@ module.exports = function (app) {
   //create pi
   router.post("/create", controller.createPI);
 
-  //get pi
-  router.get("/get/:id", controller.getPITalk);
 
   app.use("/api/pi", router);
 };

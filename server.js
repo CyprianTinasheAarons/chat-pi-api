@@ -5,6 +5,7 @@ const app = express();
 
 let corsOptions = {
   origin: "*",
+
 };
 
 app.use(cors(corsOptions));
