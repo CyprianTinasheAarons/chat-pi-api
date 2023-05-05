@@ -17,8 +17,11 @@
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
+    "api": "^5.0.8",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.36.4",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "firebase": "^9.15.0",
     "is-email": "^1.0.2",

@@ -20,7 +20,7 @@ db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: "test",
+    dbName: "pi",
   })
   .then(() => {
     console.log("Connected to the database!");
@@ -32,19 +32,11 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to coindraw application." });
+  res.json({ message: "Welcome to chat-pi application." });
 });
 
-require("./app/routes/user.routes")(app);
 require("./app/routes/auth.routes")(app);
-require("./app/routes/draw.routes")(app);
-require("./app/routes/transaction.routes")(app);
-require("./app/routes/winner.routes")(app);
-require("./app/routes/web3user.routes")(app);
-require("./app/routes/notifications.routes")(app);
-require("./app/routes/distribute.routes")(app);
-require("./app/routes/airdrop.routes")(app);
-require("./app/routes/referral.routes")(app);
+require("./app/routes/pi.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
