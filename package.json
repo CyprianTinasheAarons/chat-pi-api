@@ -1,0 +1,31 @@
+{
+  "name": "node-express-mongodb",
+  "version": "1.0.0",
+  "description": "Node.js Restful CRUD API with Node.js, Express and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest",
+    "api",
+    "mongodb"
+  ],
+  "author": "cyprian",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "firebase": "^9.15.0",
+    "is-email": "^1.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.2",
+    "morgan": "^1.10.0",
+    "qrcode": "^1.5.1",
+    "speakeasy": "^2.0.0"
+  }
+}
