@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to chat-pi application." });
 });
 
-require("./app/routes/auth.routes")(app);
+
 require("./app/routes/pi.routes")(app);
 
 // set port, listen for requests
