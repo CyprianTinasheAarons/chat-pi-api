@@ -5,14 +5,14 @@ require("dotenv").config();
 
 // Configuration
 cloudinary.config({
-  cloud_name: "dqzpz4w3l",
-  api_key: "572199751471922",
-  api_secret: "-qhTCNdgrKKZ0fLpi5IBa7VMjVA",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 const CHUNK_SIZE = 1024;
 const url =
-  "https://api.elevenlabs.io/v1/text-to-speech/GyXKLdSk9ixiwbpafwHE/stream";
+  "https://api.elevenlabs.io/v1/text-to-speech/xSU92nC1OTAcq0Hlgd4v/stream";
 const headers = {
   Accept: "audio/mpeg",
   "Content-Type": "application/json",
